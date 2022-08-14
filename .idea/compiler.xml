@@ -10,5 +10,8 @@
         <module name="SpringBootMongoTestProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SpringBootMongoTestProject" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
