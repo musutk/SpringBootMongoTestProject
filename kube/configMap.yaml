@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-mongo-int-config
+  namespace: default
+data:
+  application.properties: |-
+    mongo.username=root
+    mongo.secret=rootpassword
+    mongo.url=host.docker.internal:27017
+    mongo.database=TEST-DB

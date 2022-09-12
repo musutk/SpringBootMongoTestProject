@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-mongo-int-service
+spec:
+  containers:
+    - name: spring-mongo-int-service
+      image: spring-mongo-int
+      imagePullPolicy: Never
+      envFrom:
+        - configMapRef:
+            name: spring-mongo-int-config

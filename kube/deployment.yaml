@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-mongo-int-service
+spec:
+  selector:
+    matchLabels:
+      app: spring-mongo-int-service
+  template:
+    metadata:
+      labels:
+        app: spring-mongo-int-service
+    spec:
+      containers:
+        - name: spring-mongo-int-service
+          image: spring-mongo-int
+          imagePullPolicy: Never
+      restartPolicy: Always
+
