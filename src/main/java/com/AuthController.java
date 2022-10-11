@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -47,12 +48,23 @@ public class AuthController {
     }
 
     @PostMapping(path = "post")
-    public ResponseEntity<Object> auth(@RequestBody Map<String, Object> body) {
+    public ResponseEntity<Object> add(@RequestBody Map<String, Object> body) {
         log.info("Received '/post' request body=" + body);
         var document = new Document(body);
         collection.insertOne(document);
         log.info("Returning OK '/post' request body");
         return ResponseEntity.ok().build();
+    }
+
+
+    @GetMapping(path = "getall")
+    public ResponseEntity<Object> getAll() {
+        log.info("Received '/getAll' request");
+        var find = collection.find();
+        var docMap = new ArrayList<Document>();
+        find.iterator().forEachRemaining(docMap::add);
+        log.info("Returning OK '/getAll' request");
+        return ResponseEntity.ok(docMap);
     }
 
     @GetMapping(path = "health")
